@@ -1,69 +1,78 @@
-# React + TypeScript + Vite
+# CodeMark
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yourusername/codemark)  
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)  
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/codemark/actions)
 
-Currently, two official plugins are available:
+A blazing-fast, plugin-ready Markdown editor with live preview, line numbers, and HTML export—powered by React, Vite, Tailwind CSS & shadcn/ui.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Split-pane editor** with line numbering and JetBrains Mono font
+- **Live preview** of your Markdown with GitHub-flavored syntax (tables, task lists, footnotes)
+- **Toggle view**: switch between rendered preview and raw HTML
+- **Export** your document as Markdown, HTML, or PDF
+- **Dark mode** support via CSS `prefers-color-scheme` (no JS toggle required)
+- **Plugin-ready**: easily add remark/rehype plugins for diagrams, math, and more
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠 Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **React** – component-based UI
+- **Vite** – lightning-fast dev server & bundler
+- **TypeScript** – type safety & IntelliSense
+- **Tailwind CSS** – utility-first styling
+- **shadcn/ui** – accessible UI primitives
+- **React Router** – in-app routing
+- **React Markdown** + **remark-gfm** – Markdown → React nodes
+- **Unified** + **rehype-stringify** – Markdown → HTML conversion
+- **Lucide** – iconography
+
+---
+
+## 💻 Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/codemark.git
+cd codemark
+
+# Install dependencies
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start the dev server
+npm run dev
+# or
+yarn dev
 ```
+
+## 📦 Production
+
+# Build for production
+
+npm run build
+
+# or
+
+yarn build
+
+# Preview the production build locally
+
+npm run preview
+
+# or
+
+yarn preview
+
+## 📄 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
