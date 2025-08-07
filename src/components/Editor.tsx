@@ -28,12 +28,28 @@ export default function Editor() {
     <section className="flex flex-col h-screen w-full pt-16 pb-4 bg-background">
       <Appbar />
 
-      <div className="flex flex-1 overflow-hidden divide-x divide-border hover:divide-primary transition-colors duration-200">
+      <div
+        className="
+          flex
+          flex-1
+          flex-col      /* stack on mobile */
+          md:flex-row   /* side-by-side from md up */
+          overflow-hidden
+          divide-y
+          md:divide-y-0
+          md:divide-x
+          divide-border
+          hover:divide-primary
+          transition-colors duration-200
+        "
+      >
+        {/* Markdown Pane */}
         <div className="flex flex-col flex-1 overflow-hidden rounded-md shadow-sm bg-background">
           <div className="px-4 py-2 bg-muted/10 dark:bg-muted/20 border-b border-border font-medium text-muted transition-colors duration-200">
             Markdown
           </div>
           <div className="flex flex-1 overflow-hidden">
+            {/* Line Numbers */}
             <div
               className="
                 flex-shrink-0
@@ -43,8 +59,7 @@ export default function Editor() {
                 text-right
                 font-jetbrains
                 tabular-nums
-                pl-4
-                pr-4
+                pl-4 pr-4
                 overflow-hidden
                 transition-colors duration-200
               "
@@ -56,6 +71,7 @@ export default function Editor() {
               ))}
             </div>
 
+            {/* Editor */}
             <textarea
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
@@ -77,6 +93,7 @@ export default function Editor() {
           </div>
         </div>
 
+        {/* Preview Pane */}
         <div className="flex flex-col flex-1 overflow-hidden rounded-md shadow-sm bg-card">
           <div className="px-4 py-2 bg-muted/10 dark:bg-muted/20 border-b border-border flex items-center justify-between transition-colors duration-200">
             <span className="font-medium text-muted">Preview</span>
@@ -85,9 +102,7 @@ export default function Editor() {
                 onClick={() => setView("preview")}
                 aria-label="Rendered preview"
                 className={`
-                  p-1
-                  rounded-sm
-                  transition-colors duration-200
+                  p-1 rounded-sm transition-colors duration-200
                   ${
                     view === "preview"
                       ? "text-primary"
@@ -101,9 +116,7 @@ export default function Editor() {
                 onClick={() => setView("html")}
                 aria-label="View HTML source"
                 className={`
-                  p-1
-                  rounded-sm
-                  transition-colors duration-200
+                  p-1 rounded-sm transition-colors duration-200
                   ${
                     view === "html"
                       ? "text-primary"
@@ -119,11 +132,8 @@ export default function Editor() {
           {view === "preview" ? (
             <article
               className="
-                flex-1
-                p-4
-                overflow-auto
-                bg-card
-                text-card-foreground
+                flex-1 p-4 overflow-auto
+                bg-card text-card-foreground
                 prose prose-lg dark:prose-invert
                 max-w-none
                 scrollbar-thin scrollbar-thumb-muted scrollbar-track-background
@@ -137,13 +147,9 @@ export default function Editor() {
           ) : (
             <pre
               className="
-                flex-1
-                p-4
-                overflow-auto
-                bg-card
-                text-card-foreground
-                whitespace-pre-wrap
-                break-words
+                flex-1 p-4 overflow-auto
+                bg-card text-card-foreground
+                whitespace-pre-wrap break-words
                 scrollbar-thin scrollbar-thumb-muted scrollbar-track-background
                 transition-colors duration-200
               "
